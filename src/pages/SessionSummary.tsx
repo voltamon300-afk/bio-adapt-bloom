@@ -227,10 +227,12 @@ export const SessionSummary = () => {
           <Button
             variant="nature"
             onClick={handleHome}
-            className="w-full max-w-md mx-auto block"
+            className="w-full max-w-md mx-auto flex items-center justify-center space-x-2"
+            aria-label="Return to dashboard"
+            size="lg"
           >
-            <Home className="w-5 h-5 mr-2" />
-            Return to Dashboard
+            <Home className="w-5 h-5" />
+            <span>Return to dashboard</span>
           </Button>
         </div>
       </div>

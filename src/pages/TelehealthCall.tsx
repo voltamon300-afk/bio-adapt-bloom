@@ -60,110 +60,114 @@ export const TelehealthCall = () => {
 
   if (isInCall) {
     return (
-      <div className="relative min-h-screen bg-gray-900 overflow-hidden">
-        {/* Main Video Area */}
-        <div className="relative h-full">
-          {/* Clinician Video (Main) - Responsive */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-4">
-                  <User className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-white" />
+      <div className="relative min-h-screen bg-gray-900 overflow-hidden flex flex-col">
+        {/* Main Video Area grows to fill space */}
+        <div className="relative flex-1">
+            {/* Clinician Video (Main) - Responsive */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center p-6">
+              <div className="w-full max-w-6xl max-h-[calc(100vh-14rem)] h-full flex items-center justify-center">
+                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center overflow-hidden px-4">
+                  <div className="text-center text-white px-4">
+                    <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-4">
+                      <User className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 text-white" />
+                    </div>
+                    <h3 className="font-header text-xl md:text-2xl lg:text-3xl mb-2">Dr. Sarah Chen</h3>
+                    <p className="font-body text-sm md:text-base opacity-80">Physical Therapist</p>
+                  </div>
                 </div>
-                <h3 className="font-header text-xl md:text-2xl lg:text-3xl mb-2">Dr. Sarah Chen</h3>
-                <p className="font-body text-sm md:text-base opacity-80">Physical Therapist</p>
               </div>
             </div>
-          </div>
 
-          {/* User Video (Picture-in-Picture) - Responsive */}
-          <div className="absolute top-4 right-4 w-32 h-48 md:w-40 md:h-60 lg:w-48 lg:h-72 bg-gray-700 rounded-lg border-2 border-white/20 overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-br from-secondary/30 to-primary/30 flex items-center justify-center">
-              {isVideoOn ? (
-                <div className="text-center text-white">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-2">
-                    <User className="w-6 h-6 md:w-8 md:h-8 text-white" />
-                  </div>
-                  <p className="font-caption text-xs md:text-sm">You</p>
+            {/* User Video (Picture-in-Picture) - Responsive and fits above controls */}
+            <div
+              className="absolute right-4 md:right-6"
+              style={{ bottom: '5.5rem' }}
+              aria-hidden={false}
+            >
+              <div className="rounded-lg border-2 border-white/20 overflow-hidden bg-gray-700" style={{ width: 'clamp(96px, 20vw, 320px)', height: 'clamp(128px, 28vw, 480px)' }}>
+                <div className="w-full h-full bg-gradient-to-br from-secondary/30 to-primary/30 flex items-center justify-center">
+                  {isVideoOn ? (
+                    <div className="text-center text-white">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-2">
+                        <User className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                      </div>
+                      <p className="font-caption text-xs md:text-sm">You</p>
+                    </div>
+                  ) : (
+                    <div className="text-center text-white/60">
+                      <VideoOff className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-2" />
+                      <p className="font-caption text-xs md:text-sm">Video Off</p>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div className="text-center text-white/60">
-                  <VideoOff className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-2" />
-                  <p className="font-caption text-xs md:text-sm">Video Off</p>
-                </div>
-              )}
+              </div>
             </div>
-          </div>
 
           {/* Call Info - Responsive */}
           <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-sm text-white px-3 py-2 rounded-lg">
             <p className="font-caption text-sm md:text-base">{formatDuration(callDuration)}</p>
           </div>
 
-          {/* Control Bar - Responsive */}
-          <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-4 md:p-6">
-            <div className="flex items-center justify-center space-x-4 md:space-x-6">
-              <Button
-                variant={isMicOn ? "secondary" : "destructive"}
-                size="icon-lg"
-                onClick={toggleMic}
-                aria-label={isMicOn ? "Mute microphone" : "Unmute microphone"}
-                className="rounded-full w-12 h-12 md:w-14 md:h-14"
-              >
-                {isMicOn ? <Mic className="w-6 h-6" /> : <MicOff className="w-6 h-6" />}
-              </Button>
+              {/* Control Bar - Responsive: fixed overlay at bottom */}
+          <div className="fixed left-0 right-0 bottom-0 bg-black/60 backdrop-blur-sm p-3 md:p-6 z-40">
+            <div className="relative">
+              {/* Centered trio: mic, video, end call */}
+              <div className="mx-auto w-[min(420px,80vw)] flex items-center justify-between">
+                <Button
+                  variant={isMicOn ? "secondary" : "destructive"}
+                  size="icon-lg"
+                  onClick={toggleMic}
+                  aria-label={isMicOn ? "Mute microphone" : "Unmute microphone"}
+                  className="rounded-full w-12 h-12 md:w-14 md:h-14"
+                >
+                  {isMicOn ? <Mic className="w-6 h-6" /> : <MicOff className="w-6 h-6" />}
+                </Button>
 
-              <Button
-                variant={isVideoOn ? "secondary" : "destructive"}
-                size="icon-lg"
-                onClick={toggleVideo}
-                aria-label={isVideoOn ? "Turn video off" : "Turn video on"}
-                className="rounded-full w-12 h-12 md:w-14 md:h-14"
-              >
-                {isVideoOn ? <Video className="w-6 h-6" /> : <VideoOff className="w-6 h-6" />}
-              </Button>
+                <Button
+                  variant={isVideoOn ? "secondary" : "destructive"}
+                  size="icon-lg"
+                  onClick={toggleVideo}
+                  aria-label={isVideoOn ? "Turn video off" : "Turn video on"}
+                  className="rounded-full w-12 h-12 md:w-14 md:h-14"
+                >
+                  {isVideoOn ? <Video className="w-6 h-6" /> : <VideoOff className="w-6 h-6" />}
+                </Button>
 
-              <Button
-                variant="destructive"
-                size="icon-lg"
-                onClick={handleEndCall}
-                aria-label="End call"
-                className="rounded-full w-12 h-12 md:w-14 md:h-14"
-              >
-                <Phone className="w-6 h-6 rotate-[135deg]" />
-              </Button>
+                <Button
+                  variant="destructive"
+                  size="icon-lg"
+                  onClick={handleEndCall}
+                  aria-label="End call"
+                  className="rounded-full w-12 h-12 md:w-14 md:h-14"
+                >
+                  <Phone className="w-6 h-6 rotate-[135deg]" />
+                </Button>
+              </div>
 
-              <Button
-                variant="nature"
-                aria-label="Open messages"
-                size="icon-lg"
-                className="rounded-full w-12 h-12 md:w-14 md:h-14"
-              >
-                <MessageSquare className="w-6 h-6" />
-              </Button>
+              {/* Secondary icons right side: messages, settings */}
+              <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
+                <Button
+                  variant="nature"
+                  aria-label="Open messages"
+                  size="icon-lg"
+                  className="rounded-full w-10 h-10 md:w-12 md:h-12"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                </Button>
 
-              <Button
-                variant="ghost"
-                aria-label="Call settings"
-                size="icon-lg"
-                className="rounded-full text-white hover:bg-white/20 w-12 h-12 md:w-14 md:h-14"
-              >
-                <Settings className="w-6 h-6" />
-              </Button>
+                <Button
+                  variant="ghost"
+                  aria-label="Call settings"
+                  size="icon-lg"
+                  className="rounded-full text-white hover:bg-white/20 w-10 h-10 md:w-12 md:h-12"
+                >
+                  <Settings className="w-5 h-5" />
+                </Button>
+              </div>
             </div>
           </div>
 
-          {/* Adjust Plan Button - Responsive */}
-          <div className="absolute bottom-24 md:bottom-32 right-4 md:right-6">
-            <Button
-              variant="healing"
-              size="sm"
-              className="bg-secondary/90 backdrop-blur-sm border border-secondary-foreground/20 text-sm md:text-base"
-              aria-label="Adjust plan"
-            >
-              Adjust Plan
-            </Button>
-          </div>
+            {/* Adjust Plan removed per request */}
         </div>
       </div>
     );

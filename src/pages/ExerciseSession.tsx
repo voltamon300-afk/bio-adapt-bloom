@@ -75,6 +75,19 @@ export const ExerciseSession = () => {
     }
   };
 
+  // Simple exercise metadata for display in the UI.
+  const exercises = [
+    { name: "Ankle Pumps", description: "Gently point and flex your foot to increase circulation and ankle mobility." },
+    { name: "Heel Slides", description: "Slide your heel toward your buttocks keeping your foot on the floor to improve knee flexion." },
+    { name: "Quadriceps Sets", description: "Tighten the muscles on the front of your thigh and hold for a few seconds to build strength." },
+    { name: "Straight Leg Raises", description: "Lie down and lift your straight leg a few inches, keeping your knee locked, to engage the hip flexors." },
+    { name: "Mini Squats", description: "Stand with feet hip-width and bend knees slightly, keeping weight on heels to activate glutes safely." },
+    { name: "Calf Raises", description: "Rise onto your toes slowly and lower back down to strengthen calf muscles and balance." },
+    { name: "Hamstring Curls", description: "Bend your knee to bring your heel toward your buttock to target hamstring strength." },
+  ];
+
+  const currentExerciseMeta = exercises[currentExercise - 1] ?? { name: `Exercise ${currentExercise}`, description: "Follow the on-screen guidance for this exercise." };
+
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-background/95 to-muted/40 overflow-hidden">
       {/* Background Illustration */}
@@ -127,28 +140,7 @@ export const ExerciseSession = () => {
       <div className="relative flex-1 flex items-center justify-center px-4 py-8">
         {/* Exercise Area - Responsive sizing */}
         <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg aspect-[3/4] md:aspect-[4/3] lg:aspect-[16/10] rounded-xl border-2 border-secondary/30 bg-gradient-calm backdrop-blur-sm overflow-hidden">
-          {/* Skeletal Overlay Simulation */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative">
-              {/* Simplified skeletal points - responsive */}
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-8 md:top-12 left-1/2 transform -translate-x-1/2" />
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-16 md:top-20 left-8 md:left-12" />
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-16 md:top-20 right-8 md:right-12" />
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-32 md:top-40 left-1/2 transform -translate-x-1/2" />
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute bottom-16 md:bottom-20 left-6 md:left-8" />
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute bottom-16 md:bottom-20 right-6 md:right-8" />
-              
-              {/* Connecting lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300">
-                <line x1="100" y1="32" x2="32" y2="64" stroke="#4CAF50" strokeWidth="2" opacity="0.7" />
-                <line x1="100" y1="32" x2="168" y2="64" stroke="#4CAF50" strokeWidth="2" opacity="0.7" />
-                <line x1="32" y1="64" x2="100" y2="128" stroke="#4CAF50" strokeWidth="2" opacity="0.7" />
-                <line x1="168" y1="64" x2="100" y2="128" stroke="#4CAF50" strokeWidth="2" opacity="0.7" />
-                <line x1="100" y1="128" x2="24" y2="236" stroke="#4CAF50" strokeWidth="2" opacity="0.7" />
-                <line x1="100" y1="128" x2="176" y2="236" stroke="#4CAF50" strokeWidth="2" opacity="0.7" />
-              </svg>
-            </div>
-          </div>
+          {/* Background visuals removed for a cleaner progress card - kept intentionally empty */}
 
           {/* Rep Counter */}
           <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-lg px-3 py-2">
@@ -183,20 +175,18 @@ export const ExerciseSession = () => {
                   className="text-secondary transition-all duration-300"
                 />
               </svg>
-              <Button
-                variant="session"
-                size="icon"
-                className="absolute inset-2 rounded-full"
+              <button
                 onClick={handlePlayPause}
                 aria-label={isPlaying ? "Pause session" : "Start session"}
                 title={isPlaying ? "Pause session" : "Start session"}
+                className="absolute inset-2 rounded-full flex items-center justify-center bg-transparent border-0 p-0 focus:outline-none"
               >
                 {isPlaying ? (
-                  <Pause className="w-5 h-5 md:w-6 md:h-6" />
+                  <Pause className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
                 ) : (
-                  <Play className="w-5 h-5 md:w-6 md:h-6 ml-0.5" />
+                  <Play className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
                 )}
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -207,6 +197,8 @@ export const ExerciseSession = () => {
         <div className="app-container">
           <Card className="card-nature responsive-card-padding bg-background/90 backdrop-blur-sm border-secondary/20">
             <div className="text-center">
+              <h3 className="font-header text-base md:text-lg text-foreground mb-1">{currentExerciseMeta.name}</h3>
+              <p className="text-sm text-muted-foreground mb-2">{currentExerciseMeta.description}</p>
               <p className="text-nature-cue text-sm md:text-base mb-3">
                 {feedback}
               </p>
@@ -236,29 +228,15 @@ export const ExerciseSession = () => {
       {/* Control Bar */}
       <div className="relative z-10 p-4 bg-background/80 backdrop-blur-sm border-t border-border/50">
         <div className="app-container">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <Button
               variant="destructive"
-              size="sm"
+              size="lg"
               onClick={handleStop}
+              className="w-full max-w-sm mx-auto flex items-center justify-center"
             >
               <Square className="w-4 h-4 mr-2" />
               End Session
-            </Button>
-
-            <div className="text-center">
-              <p className="font-caption text-xs md:text-sm text-muted-foreground">
-                Correctness: 94%
-              </p>
-            </div>
-
-            <Button
-              variant="secondary"
-              size="icon"
-              className="rounded-full"
-              aria-label="Toggle microphone"
-            >
-              <Mic className="w-4 h-4" />
             </Button>
           </div>
         </div>
