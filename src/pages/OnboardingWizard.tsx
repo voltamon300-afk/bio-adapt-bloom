@@ -57,88 +57,92 @@ export const OnboardingWizard = () => {
   };
 
   return (
-    <div className="mobile-container flex flex-col min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
+    <div className="app-container flex flex-col min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
       {/* Progress Indicator */}
       <div className="pt-8 pb-4">
-        <Progress value={progress} className="h-2 mb-2" />
-        <div className="flex justify-center space-x-2">
-          {ONBOARDING_STEPS.map((_, index) => (
-            <div
-              key={index}
-              className={cn(
-                "w-2 h-2 rounded-full transition-colors duration-300",
-                index <= currentStep ? "bg-primary" : "bg-muted"
-              )}
-            />
-          ))}
+        <div className="max-w-md mx-auto">
+          <Progress value={progress} className="h-2 mb-4" />
+          <div className="flex justify-center space-x-2">
+            {ONBOARDING_STEPS.map((_, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "w-2 h-2 rounded-full transition-colors duration-300",
+                  index <= currentStep ? "bg-primary" : "bg-muted"
+                )}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col justify-center px-4">
-        <Card className="card-nature p-8 text-center">
-          {/* Logo */}
-          {currentStep === 0 && (
-            <div className="mb-8 flex justify-center">
-              <img 
-                src={logoImage} 
-                alt="BioAdapt Logo" 
-                className="w-24 h-24 loading-leaf"
-              />
+      <div className="flex-1 flex flex-col justify-center px-2">
+        <div className="max-w-lg mx-auto w-full">
+          <Card className="card-nature responsive-card-padding text-center">
+            {/* Logo */}
+            {currentStep === 0 && (
+              <div className="mb-8 flex justify-center">
+                <img 
+                  src={logoImage} 
+                  alt="BioAdapt Logo" 
+                  className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 loading-leaf"
+                />
+              </div>
+            )}
+            
+            {/* Icon */}
+            <div className="mb-6 flex justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-sky rounded-full flex items-center justify-center">
+                <currentStepData.icon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
+              </div>
             </div>
-          )}
-          
-          {/* Icon */}
-          <div className="mb-6 flex justify-center">
-            <div className="w-16 h-16 bg-gradient-sky rounded-full flex items-center justify-center">
-              <currentStepData.icon className="w-8 h-8 text-white" />
-            </div>
-          </div>
-          
-          {/* Content */}
-          <h1 className="font-header text-2xl mb-2 text-foreground">
-            {currentStepData.title}
-          </h1>
-          <h2 className="font-body text-lg text-secondary mb-4">
-            {currentStepData.subtitle}
-          </h2>
-          <p className="font-body text-foreground-body mb-8 leading-relaxed">
-            {currentStepData.content}
-          </p>
-          
-          {/* Call to Action */}
-          {currentStep === ONBOARDING_STEPS.length - 1 ? (
-            <Button
-              variant="healing"
-              size="lg"
-              onClick={handleNext}
-              className="w-full mb-4"
-            >
-              Start Your Journey
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          ) : (
-            <Button
-              variant="default"
-              size="lg"
-              onClick={handleNext}
-              className="w-full mb-4"
-            >
-              {currentStep === 2 ? "Allow Camera Access" : "Next"}
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          )}
-          
-          {currentStep < ONBOARDING_STEPS.length - 1 && (
-            <Button
-              variant="ghost"
-              onClick={handleSkip}
-              className="text-muted-foreground"
-            >
-              Skip for now
-            </Button>
-          )}
-        </Card>
+            
+            {/* Content */}
+            <h1 className="font-header text-2xl md:text-3xl lg:text-4xl mb-2 text-foreground responsive-header">
+              {currentStepData.title}
+            </h1>
+            <h2 className="font-body text-lg md:text-xl lg:text-2xl text-secondary mb-4 responsive-subheader">
+              {currentStepData.subtitle}
+            </h2>
+            <p className="font-body text-foreground-body mb-8 leading-relaxed responsive-body max-w-md mx-auto">
+              {currentStepData.content}
+            </p>
+            
+            {/* Call to Action */}
+            {currentStep === ONBOARDING_STEPS.length - 1 ? (
+              <Button
+                variant="healing"
+                size="lg"
+                onClick={handleNext}
+                className="w-full max-w-sm mx-auto mb-4"
+              >
+                Start Your Journey
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            ) : (
+              <Button
+                variant="default"
+                size="lg"
+                onClick={handleNext}
+                className="w-full max-w-sm mx-auto mb-4"
+              >
+                {currentStep === 2 ? "Allow Camera Access" : "Next"}
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            )}
+            
+            {currentStep < ONBOARDING_STEPS.length - 1 && (
+              <Button
+                variant="ghost"
+                onClick={handleSkip}
+                className="text-muted-foreground"
+              >
+                Skip for now
+              </Button>
+            )}
+          </Card>
+        </div>
       </div>
       
       {/* Footer */}

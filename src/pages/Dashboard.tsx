@@ -64,21 +64,21 @@ export const Dashboard = () => {
   };
 
   return (
-    <div className="mobile-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+    <div className="app-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       {/* Header */}
       <div className="flex items-center justify-between py-6 px-2">
         <div className="flex items-center space-x-3">
-          <Avatar className="w-12 h-12">
+          <Avatar className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16">
             <AvatarImage src="/avatar-placeholder.png" alt="User" />
             <AvatarFallback className="bg-gradient-sky text-white font-header">
               JD
             </AvatarFallback>
           </Avatar>
           <div>
-            <h1 className="font-header text-xl text-foreground">
+            <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
               Hello, Jordan
             </h1>
-            <p className="font-caption text-sm text-muted-foreground">
+            <p className="font-caption text-sm md:text-base text-muted-foreground">
               Ready to continue your healing journey?
             </p>
           </div>
@@ -105,15 +105,15 @@ export const Dashboard = () => {
 
       {/* Welcome Message */}
       <div className="mb-8 px-2">
-        <Card className="card-nature p-6 bg-gradient-calm border-secondary/20">
+        <Card className="card-nature responsive-card-padding bg-gradient-calm border-secondary/20">
           <div className="text-center">
-            <h2 className="font-header text-lg mb-2 text-foreground">
+            <h2 className="font-header text-lg md:text-xl lg:text-2xl mb-2 text-foreground responsive-subheader">
               Today's Focus: Gentle Movement
             </h2>
-            <p className="text-nature-cue text-sm mb-4">
+            <p className="text-nature-cue text-sm md:text-base mb-4">
               "Like a tree that bends in the wind, find strength in flexibility"
             </p>
-            <div className="flex items-center justify-center space-x-4 text-sm">
+            <div className="flex items-center justify-center space-x-4 md:space-x-8 text-sm md:text-base">
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-secondary rounded-full" />
                 <span className="font-caption text-muted-foreground">3 exercises remaining</span>
@@ -128,32 +128,32 @@ export const Dashboard = () => {
       </div>
 
       {/* Action Cards Grid */}
-      <div className="mobile-grid mb-8 px-2">
+      <div className="action-grid mb-8 px-2">
         {ACTION_CARDS.map((card) => (
           <Card
             key={card.id}
-            className="card-elevated cursor-pointer group p-6 hover:shadow-card-hover transition-all duration-300"
+            className="card-elevated cursor-pointer group responsive-card-padding hover:shadow-card-hover transition-all duration-300"
             onClick={() => handleCardClick(card.route)}
           >
             <div className="text-center">
               <div className="mb-4 flex justify-center">
                 <div className={`
-                  w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110
+                  w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110
                   ${card.variant === 'healing' ? 'bg-gradient-healing' : 
                     card.variant === 'energy' ? 'bg-gradient-energy' : 
                     card.variant === 'nature' ? 'bg-gradient-calm border border-secondary/20' : 
                     'bg-primary'}
                 `}>
-                  <card.icon className="w-6 h-6 text-white" />
+                  <card.icon className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
                 </div>
               </div>
-              <h3 className="font-header text-base mb-1 text-foreground">
+              <h3 className="font-header text-base md:text-lg lg:text-xl mb-1 text-foreground">
                 {card.title}
               </h3>
-              <p className="font-caption text-xs text-muted-foreground mb-2">
+              <p className="font-caption text-xs md:text-sm text-muted-foreground mb-2">
                 {card.subtitle}
               </p>
-              <p className="font-body text-xs text-foreground-body leading-relaxed">
+              <p className="font-body text-xs md:text-sm lg:text-base text-foreground-body leading-relaxed">
                 {card.description}
               </p>
             </div>
@@ -163,28 +163,28 @@ export const Dashboard = () => {
 
       {/* Quick Stats */}
       <div className="px-2 mb-6">
-        <Card className="card-elevated p-4">
+        <Card className="card-elevated responsive-card-padding">
           <div className="flex items-center justify-between">
             <div className="text-center flex-1">
-              <p className="font-header text-lg text-primary">73%</p>
-              <p className="font-caption text-xs text-muted-foreground">Progress</p>
+              <p className="font-header text-lg md:text-xl lg:text-2xl text-primary">73%</p>
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">Progress</p>
             </div>
             <div className="w-px h-8 bg-border" />
             <div className="text-center flex-1">
-              <p className="font-header text-lg text-secondary">12</p>
-              <p className="font-caption text-xs text-muted-foreground">Days Active</p>
+              <p className="font-header text-lg md:text-xl lg:text-2xl text-secondary">12</p>
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">Days Active</p>
             </div>
             <div className="w-px h-8 bg-border" />
             <div className="text-center flex-1">
-              <p className="font-header text-lg text-accent">245</p>
-              <p className="font-caption text-xs text-muted-foreground">Points</p>
+              <p className="font-header text-lg md:text-xl lg:text-2xl text-accent">245</p>
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">Points</p>
             </div>
           </div>
         </Card>
       </div>
 
       {/* Voice Command Indicator */}
-      <div className="fixed bottom-4 right-4">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 lg:bottom-8 lg:right-8">
         <Button
           variant="secondary"
           size="icon-lg"

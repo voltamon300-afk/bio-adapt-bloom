@@ -63,52 +63,51 @@ export const TelehealthCall = () => {
       <div className="relative min-h-screen bg-gray-900 overflow-hidden">
         {/* Main Video Area */}
         <div className="relative h-full">
-          {/* Clinician Video (Main) */}
+          {/* Clinician Video (Main) - Responsive */}
           <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-            {/* Simulated video feed */}
             <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
               <div className="text-center text-white">
-                <div className="w-24 h-24 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-4">
-                  <User className="w-12 h-12 text-white" />
+                <div className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-4">
+                  <User className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-white" />
                 </div>
-                <h3 className="font-header text-xl mb-2">Dr. Sarah Chen</h3>
-                <p className="font-body text-sm opacity-80">Physical Therapist</p>
+                <h3 className="font-header text-xl md:text-2xl lg:text-3xl mb-2">Dr. Sarah Chen</h3>
+                <p className="font-body text-sm md:text-base opacity-80">Physical Therapist</p>
               </div>
             </div>
           </div>
 
-          {/* User Video (Picture-in-Picture) */}
-          <div className="absolute top-4 right-4 w-32 h-48 bg-gray-700 rounded-lg border-2 border-white/20 overflow-hidden">
+          {/* User Video (Picture-in-Picture) - Responsive */}
+          <div className="absolute top-4 right-4 w-32 h-48 md:w-40 md:h-60 lg:w-48 lg:h-72 bg-gray-700 rounded-lg border-2 border-white/20 overflow-hidden">
             <div className="w-full h-full bg-gradient-to-br from-secondary/30 to-primary/30 flex items-center justify-center">
               {isVideoOn ? (
                 <div className="text-center text-white">
-                  <div className="w-12 h-12 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-2">
-                    <User className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-2">
+                    <User className="w-6 h-6 md:w-8 md:h-8 text-white" />
                   </div>
-                  <p className="font-caption text-xs">You</p>
+                  <p className="font-caption text-xs md:text-sm">You</p>
                 </div>
               ) : (
                 <div className="text-center text-white/60">
-                  <VideoOff className="w-8 h-8 mx-auto mb-2" />
-                  <p className="font-caption text-xs">Video Off</p>
+                  <VideoOff className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-2" />
+                  <p className="font-caption text-xs md:text-sm">Video Off</p>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Call Info */}
+          {/* Call Info - Responsive */}
           <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-sm text-white px-3 py-2 rounded-lg">
-            <p className="font-caption text-sm">{formatDuration(callDuration)}</p>
+            <p className="font-caption text-sm md:text-base">{formatDuration(callDuration)}</p>
           </div>
 
-          {/* Control Bar */}
-          <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-4">
-            <div className="flex items-center justify-center space-x-4">
+          {/* Control Bar - Responsive */}
+          <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-4 md:p-6">
+            <div className="flex items-center justify-center space-x-4 md:space-x-6">
               <Button
                 variant={isMicOn ? "secondary" : "destructive"}
                 size="icon-lg"
                 onClick={toggleMic}
-                className="rounded-full"
+                className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 {isMicOn ? <Mic className="w-6 h-6" /> : <MicOff className="w-6 h-6" />}
               </Button>
@@ -117,7 +116,7 @@ export const TelehealthCall = () => {
                 variant={isVideoOn ? "secondary" : "destructive"}
                 size="icon-lg"
                 onClick={toggleVideo}
-                className="rounded-full"
+                className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 {isVideoOn ? <Video className="w-6 h-6" /> : <VideoOff className="w-6 h-6" />}
               </Button>
@@ -126,7 +125,7 @@ export const TelehealthCall = () => {
                 variant="destructive"
                 size="icon-lg"
                 onClick={handleEndCall}
-                className="rounded-full"
+                className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 <Phone className="w-6 h-6 rotate-[135deg]" />
               </Button>
@@ -134,7 +133,7 @@ export const TelehealthCall = () => {
               <Button
                 variant="nature"
                 size="icon-lg"
-                className="rounded-full"
+                className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 <MessageSquare className="w-6 h-6" />
               </Button>
@@ -142,18 +141,18 @@ export const TelehealthCall = () => {
               <Button
                 variant="ghost"
                 size="icon-lg"
-                className="rounded-full text-white hover:bg-white/20"
+                className="rounded-full text-white hover:bg-white/20 w-12 h-12 md:w-14 md:h-14"
               >
                 <Settings className="w-6 h-6" />
               </Button>
             </div>
           </div>
 
-          {/* Adjust Plan Button */}
-          <div className="absolute bottom-24 right-4">
+          {/* Adjust Plan Button - Responsive */}
+          <div className="absolute bottom-24 md:bottom-32 right-4 md:right-6">
             <Button
               variant="healing"
-              className="bg-secondary/90 backdrop-blur-sm border border-secondary-foreground/20"
+              className="bg-secondary/90 backdrop-blur-sm border border-secondary-foreground/20 text-sm md:text-base"
             >
               Adjust Plan
             </Button>
@@ -163,9 +162,9 @@ export const TelehealthCall = () => {
     );
   }
 
-  // Pre-call lobby
+  // Pre-call lobby - Responsive
   return (
-    <div className="mobile-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+    <div className="app-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       {/* Header */}
       <div className="flex items-center justify-between py-6 px-2">
         <Button
@@ -178,7 +177,7 @@ export const TelehealthCall = () => {
           <span>Back</span>
         </Button>
         
-        <h1 className="font-header text-xl text-foreground">
+        <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
           Telehealth
         </h1>
 
@@ -187,40 +186,40 @@ export const TelehealthCall = () => {
 
       {/* Upcoming Appointment */}
       <div className="mb-6 px-2">
-        <Card className="card-nature p-6">
+        <Card className="card-nature responsive-card-padding">
           <div className="text-center mb-4">
-            <div className="w-16 h-16 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-4">
-              <User className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-4">
+              <User className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
             </div>
-            <h2 className="font-header text-xl text-foreground mb-2">
+            <h2 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground mb-2">
               Dr. Sarah Chen
             </h2>
-            <p className="font-body text-sm text-muted-foreground mb-1">
+            <p className="font-body text-sm md:text-base text-muted-foreground mb-1">
               Physical Therapist
             </p>
-            <p className="font-caption text-xs text-secondary">
+            <p className="font-caption text-xs md:text-sm text-secondary">
               Specialized in Bio-mimetic Rehabilitation
             </p>
           </div>
 
-          <div className="bg-gradient-calm p-4 rounded-lg border border-secondary/10 mb-4">
+          <div className="bg-gradient-calm p-4 md:p-6 rounded-lg border border-secondary/10 mb-4">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-2">
-                <Calendar className="w-4 h-4 text-primary" />
-                <span className="font-body text-sm text-foreground">Today</span>
+                <Calendar className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                <span className="font-body text-sm md:text-base text-foreground">Today</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4 text-secondary" />
-                <span className="font-body text-sm text-foreground">2:00 PM</span>
+                <Clock className="w-4 h-4 md:w-5 md:h-5 text-secondary" />
+                <span className="font-body text-sm md:text-base text-foreground">2:00 PM</span>
               </div>
             </div>
-            <p className="font-caption text-xs text-muted-foreground">
+            <p className="font-caption text-xs md:text-sm text-muted-foreground">
               Follow-up session: Progress review and plan adjustment
             </p>
           </div>
 
           <div className="text-center">
-            <p className="text-nature-cue text-sm mb-4">
+            <p className="text-nature-cue text-sm md:text-base mb-4">
               "Healing is a matter of time, but it is sometimes also a matter of opportunity"
             </p>
           </div>
@@ -229,25 +228,25 @@ export const TelehealthCall = () => {
 
       {/* Pre-call Settings */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
-          <h3 className="font-header text-lg text-foreground mb-4">
+        <Card className="card-elevated responsive-card-padding">
+          <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground mb-4">
             Check Your Setup
           </h3>
           
-          {/* Video Preview */}
+          {/* Video Preview - Responsive */}
           <div className="mb-4">
             <div className="aspect-video bg-gradient-to-br from-secondary/20 to-primary/20 rounded-lg border border-border flex items-center justify-center mb-3">
               {isVideoOn ? (
                 <div className="text-center text-foreground">
-                  <div className="w-16 h-16 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-3">
-                    <User className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-3">
+                    <User className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
                   </div>
-                  <p className="font-body text-sm">Video Preview</p>
+                  <p className="font-body text-sm md:text-base">Video Preview</p>
                 </div>
               ) : (
                 <div className="text-center text-muted-foreground">
-                  <VideoOff className="w-12 h-12 mx-auto mb-3" />
-                  <p className="font-body text-sm">Camera Off</p>
+                  <VideoOff className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3" />
+                  <p className="font-body text-sm md:text-base">Camera Off</p>
                 </div>
               )}
             </div>
@@ -279,14 +278,14 @@ export const TelehealthCall = () => {
 
       {/* Connection Info */}
       <div className="mb-8 px-2">
-        <Card className="card-elevated p-4">
+        <Card className="card-elevated responsive-card-padding">
           <div className="flex items-center space-x-3">
             <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-            <p className="font-body text-sm text-foreground">
+            <p className="font-body text-sm md:text-base text-foreground">
               Secure connection ready
             </p>
           </div>
-          <p className="font-caption text-xs text-muted-foreground mt-1 ml-5">
+          <p className="font-caption text-xs md:text-sm text-muted-foreground mt-1 ml-5">
             Your session is encrypted and HIPAA compliant
           </p>
         </Card>
@@ -298,7 +297,7 @@ export const TelehealthCall = () => {
           variant="healing"
           size="xl"
           onClick={handleJoinCall}
-          className="w-full"
+          className="w-full max-w-md mx-auto block"
         >
           <Video className="w-6 h-6 mr-3" />
           Join Call

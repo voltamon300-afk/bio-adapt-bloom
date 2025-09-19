@@ -34,7 +34,7 @@ export const ProgressDashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mobile-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+    <div className="app-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       {/* Header */}
       <div className="flex items-center justify-between py-6 px-2">
         <Button
@@ -47,7 +47,7 @@ export const ProgressDashboard = () => {
           <span>Back</span>
         </Button>
         
-        <h1 className="font-header text-xl text-foreground">
+        <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
           Your Progress
         </h1>
 
@@ -58,39 +58,39 @@ export const ProgressDashboard = () => {
 
       {/* Overall Progress */}
       <div className="mb-6 px-2">
-        <Card className="card-nature p-6">
+        <Card className="card-nature responsive-card-padding">
           <div className="text-center mb-4">
-            <h2 className="font-header text-2xl text-foreground mb-2">73%</h2>
-            <p className="font-body text-sm text-muted-foreground mb-4">
+            <h2 className="font-header text-2xl md:text-3xl lg:text-4xl text-foreground mb-2">73%</h2>
+            <p className="font-body text-sm md:text-base text-muted-foreground mb-4">
               Recovery Progress
             </p>
             <Progress value={73} className="h-3 mb-2" />
-            <p className="text-nature-cue text-sm">
+            <p className="text-nature-cue text-sm md:text-base">
               "You're growing stronger, like bamboo reaching for the sky"
             </p>
           </div>
           
-          <div className="grid grid-cols-3 gap-4 mt-6 pt-4 border-t border-border/50">
+          <div className="grid grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-6 pt-4 border-t border-border/50">
             <div className="text-center">
-              <div className="w-8 h-8 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-2">
-                <Activity className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-healing rounded-full flex items-center justify-center mx-auto mb-2">
+                <Activity className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
-              <p className="font-header text-lg text-foreground">156</p>
-              <p className="font-caption text-xs text-muted-foreground">Sessions</p>
+              <p className="font-header text-lg md:text-xl lg:text-2xl text-foreground">156</p>
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">Sessions</p>
             </div>
             <div className="text-center">
-              <div className="w-8 h-8 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-2">
-                <Target className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-sky rounded-full flex items-center justify-center mx-auto mb-2">
+                <Target className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
-              <p className="font-header text-lg text-foreground">89%</p>
-              <p className="font-caption text-xs text-muted-foreground">Accuracy</p>
+              <p className="font-header text-lg md:text-xl lg:text-2xl text-foreground">89%</p>
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">Accuracy</p>
             </div>
             <div className="text-center">
-              <div className="w-8 h-8 bg-gradient-energy rounded-full flex items-center justify-center mx-auto mb-2">
-                <Award className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-energy rounded-full flex items-center justify-center mx-auto mb-2">
+                <Award className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
-              <p className="font-header text-lg text-foreground">12</p>
-              <p className="font-caption text-xs text-muted-foreground">Streaks</p>
+              <p className="font-header text-lg md:text-xl lg:text-2xl text-foreground">12</p>
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">Streaks</p>
             </div>
           </div>
         </Card>
@@ -98,14 +98,14 @@ export const ProgressDashboard = () => {
 
       {/* Recovery Trend Chart */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
+        <Card className="card-elevated responsive-card-padding">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-header text-lg text-foreground">Recovery Trend</h3>
-            <TrendingUp className="w-5 h-5 text-secondary" />
+            <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground">Recovery Trend</h3>
+            <TrendingUp className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
           </div>
           
-          {/* Simple line chart simulation */}
-          <div className="relative h-32 mb-4">
+          {/* Simple line chart simulation - responsive height */}
+          <div className="relative h-32 md:h-40 lg:h-48 mb-4">
             <svg className="w-full h-full" viewBox="0 0 300 120">
               <defs>
                 <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -155,7 +155,7 @@ export const ProgressDashboard = () => {
           </div>
           
           {/* Week labels */}
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className="flex justify-between text-xs md:text-sm text-muted-foreground">
             {RECOVERY_DATA.map((item) => (
               <span key={item.day} className="font-caption">{item.day}</span>
             ))}
@@ -165,19 +165,19 @@ export const ProgressDashboard = () => {
 
       {/* Compliance Calendar */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
+        <Card className="card-elevated responsive-card-padding">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-header text-lg text-foreground">Activity Calendar</h3>
-            <Calendar className="w-5 h-5 text-primary" />
+            <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground">Activity Calendar</h3>
+            <Calendar className="w-5 h-5 md:w-6 md:h-6 text-primary" />
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-2 md:space-y-3">
             {COMPLIANCE_WEEKS.map((week, weekIndex) => (
-              <div key={weekIndex} className="flex space-x-2">
+              <div key={weekIndex} className="flex space-x-2 md:space-x-3 justify-center">
                 {week.map((active, dayIndex) => (
                   <div
                     key={dayIndex}
-                    className={`w-6 h-6 rounded-sm ${
+                    className={`w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-sm ${
                       active ? 'bg-secondary' : 'bg-muted'
                     } transition-colors duration-200`}
                   />
@@ -188,14 +188,14 @@ export const ProgressDashboard = () => {
           
           <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-secondary rounded-sm" />
-              <span className="font-caption text-xs text-muted-foreground">Active</span>
+              <div className="w-3 h-3 md:w-4 md:h-4 bg-secondary rounded-sm" />
+              <span className="font-caption text-xs md:text-sm text-muted-foreground">Active</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-muted rounded-sm" />
-              <span className="font-caption text-xs text-muted-foreground">Rest</span>
+              <div className="w-3 h-3 md:w-4 md:h-4 bg-muted rounded-sm" />
+              <span className="font-caption text-xs md:text-sm text-muted-foreground">Rest</span>
             </div>
-            <span className="font-caption text-xs text-foreground">
+            <span className="font-caption text-xs md:text-sm text-foreground">
               85% Compliance
             </span>
           </div>
@@ -204,34 +204,34 @@ export const ProgressDashboard = () => {
 
       {/* Achievements */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
-          <h3 className="font-header text-lg text-foreground mb-4">Recent Achievements</h3>
+        <Card className="card-elevated responsive-card-padding">
+          <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground mb-4">Recent Achievements</h3>
           
-          <div className="space-y-3">
-            <div className="flex items-center space-x-3 p-3 bg-gradient-calm rounded-lg border border-secondary/10">
-              <div className="w-10 h-10 bg-gradient-energy rounded-full flex items-center justify-center">
-                <Award className="w-5 h-5 text-white" />
+          <div className="space-y-3 md:space-y-4">
+            <div className="flex items-center space-x-3 p-3 md:p-4 bg-gradient-calm rounded-lg border border-secondary/10">
+              <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-energy rounded-full flex items-center justify-center">
+                <Award className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
               </div>
               <div className="flex-1">
-                <p className="font-body text-sm text-foreground">Week Warrior</p>
-                <p className="font-caption text-xs text-muted-foreground">
+                <p className="font-body text-sm md:text-base text-foreground">Week Warrior</p>
+                <p className="font-caption text-xs md:text-sm text-muted-foreground">
                   Completed 7 days straight
                 </p>
               </div>
-              <span className="font-caption text-xs text-accent">+50pts</span>
+              <span className="font-caption text-xs md:text-sm text-accent">+50pts</span>
             </div>
             
-            <div className="flex items-center space-x-3 p-3 bg-gradient-calm rounded-lg border border-secondary/10">
-              <div className="w-10 h-10 bg-gradient-healing rounded-full flex items-center justify-center">
-                <Target className="w-5 h-5 text-white" />
+            <div className="flex items-center space-x-3 p-3 md:p-4 bg-gradient-calm rounded-lg border border-secondary/10">
+              <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-healing rounded-full flex items-center justify-center">
+                <Target className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
               </div>
               <div className="flex-1">
-                <p className="font-body text-sm text-foreground">Perfect Form</p>
-                <p className="font-caption text-xs text-muted-foreground">
+                <p className="font-body text-sm md:text-base text-foreground">Perfect Form</p>
+                <p className="font-caption text-xs md:text-sm text-muted-foreground">
                   95% accuracy in last session
                 </p>
               </div>
-              <span className="font-caption text-xs text-accent">+25pts</span>
+              <span className="font-caption text-xs md:text-sm text-accent">+25pts</span>
             </div>
           </div>
         </Card>
@@ -242,7 +242,7 @@ export const ProgressDashboard = () => {
         <Button
           variant="healing"
           size="lg"
-          className="w-full"
+          className="w-full max-w-md mx-auto block"
           onClick={() => {
             // Simulate sharing
             navigator.share?.({

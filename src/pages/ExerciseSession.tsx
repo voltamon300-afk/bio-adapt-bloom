@@ -98,41 +98,41 @@ export const ExerciseSession = () => {
         </div>
         
         <div className="text-center">
-          <h1 className="font-header text-lg text-foreground">
+          <h1 className="font-header text-lg md:text-xl lg:text-2xl text-foreground">
             Exercise {currentExercise} of {totalExercises}
           </h1>
-          <p className="font-caption text-sm text-muted-foreground">
+          <p className="font-caption text-sm md:text-base text-muted-foreground">
             {formatTime(sessionTime)}
           </p>
         </div>
 
         <Button variant="ghost" size="icon-sm">
-          <Camera className="w-4 h-4" />
+          <Camera className="w-4 h-4 md:w-5 md:h-5" />
         </Button>
       </div>
 
       {/* Progress Indicator */}
       <div className="relative z-10 px-4 py-2 bg-background/60 backdrop-blur-sm">
         <Progress value={exerciseProgress} className="h-2 mb-1" />
-        <p className="font-caption text-xs text-center text-muted-foreground">
+        <p className="font-caption text-xs md:text-sm text-center text-muted-foreground">
           Session Progress
         </p>
       </div>
 
       {/* Camera/Skeletal Overlay Area */}
       <div className="relative flex-1 flex items-center justify-center px-4 py-8">
-        {/* Simulated Camera View */}
-        <div className="relative w-full max-w-sm aspect-[3/4] rounded-xl border-2 border-secondary/30 bg-gradient-calm backdrop-blur-sm overflow-hidden">
+        {/* Exercise Area - Responsive sizing */}
+        <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg aspect-[3/4] md:aspect-[4/3] lg:aspect-[16/10] rounded-xl border-2 border-secondary/30 bg-gradient-calm backdrop-blur-sm overflow-hidden">
           {/* Skeletal Overlay Simulation */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative">
-              {/* Simplified skeletal points */}
-              <div className="w-2 h-2 bg-secondary rounded-full absolute top-8 left-1/2 transform -translate-x-1/2" />
-              <div className="w-2 h-2 bg-secondary rounded-full absolute top-16 left-8" />
-              <div className="w-2 h-2 bg-secondary rounded-full absolute top-16 right-8" />
-              <div className="w-2 h-2 bg-secondary rounded-full absolute top-32 left-1/2 transform -translate-x-1/2" />
-              <div className="w-2 h-2 bg-secondary rounded-full absolute bottom-16 left-6" />
-              <div className="w-2 h-2 bg-secondary rounded-full absolute bottom-16 right-6" />
+              {/* Simplified skeletal points - responsive */}
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-8 md:top-12 left-1/2 transform -translate-x-1/2" />
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-16 md:top-20 left-8 md:left-12" />
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-16 md:top-20 right-8 md:right-12" />
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute top-32 md:top-40 left-1/2 transform -translate-x-1/2" />
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute bottom-16 md:bottom-20 left-6 md:left-8" />
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-secondary rounded-full absolute bottom-16 md:bottom-20 right-6 md:right-8" />
               
               {/* Connecting lines */}
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 300">
@@ -148,16 +148,16 @@ export const ExerciseSession = () => {
 
           {/* Rep Counter */}
           <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-lg px-3 py-2">
-            <p className="font-header text-sm text-foreground">
+            <p className="font-header text-sm md:text-base text-foreground">
               {currentReps}/{targetReps}
             </p>
-            <p className="font-caption text-xs text-muted-foreground">Reps</p>
+            <p className="font-caption text-xs md:text-sm text-muted-foreground">Reps</p>
           </div>
 
           {/* Progress Ring around center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-20 h-20">
-              <svg className="w-20 h-20 transform -rotate-90 progress-ring" viewBox="0 0 80 80">
+            <div className="relative w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28">
+              <svg className="w-full h-full transform -rotate-90 progress-ring" viewBox="0 0 80 80">
                 <circle
                   cx="40"
                   cy="40"
@@ -186,9 +186,9 @@ export const ExerciseSession = () => {
                 onClick={handlePlayPause}
               >
                 {isPlaying ? (
-                  <Pause className="w-5 h-5" />
+                  <Pause className="w-5 h-5 md:w-6 md:h-6" />
                 ) : (
-                  <Play className="w-5 h-5 ml-0.5" />
+                  <Play className="w-5 h-5 md:w-6 md:h-6 ml-0.5" />
                 )}
               </Button>
             </div>
@@ -198,58 +198,62 @@ export const ExerciseSession = () => {
 
       {/* Live Feedback */}
       <div className="relative z-10 px-4 pb-6">
-        <Card className="card-nature p-4 bg-background/90 backdrop-blur-sm border-secondary/20">
-          <div className="text-center">
-            <p className="text-nature-cue text-sm mb-3">
-              {feedback}
-            </p>
-            <div className="flex items-center justify-center space-x-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={simulateRepDetection}
-                className="text-secondary"
-              >
-                <RotateCcw className="w-4 h-4 mr-2" />
-                Rep +1
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleNextExercise}
-              >
-                Next Exercise →
-              </Button>
+        <div className="app-container">
+          <Card className="card-nature responsive-card-padding bg-background/90 backdrop-blur-sm border-secondary/20">
+            <div className="text-center">
+              <p className="text-nature-cue text-sm md:text-base mb-3">
+                {feedback}
+              </p>
+              <div className="flex items-center justify-center space-x-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={simulateRepDetection}
+                  className="text-secondary"
+                >
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Rep +1
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleNextExercise}
+                >
+                  Next Exercise →
+                </Button>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
 
       {/* Control Bar */}
       <div className="relative z-10 p-4 bg-background/80 backdrop-blur-sm border-t border-border/50">
-        <div className="flex items-center justify-between">
-          <Button
-            variant="destructive"
-            size="sm"
-            onClick={handleStop}
-          >
-            <Square className="w-4 h-4 mr-2" />
-            End Session
-          </Button>
+        <div className="app-container">
+          <div className="flex items-center justify-between">
+            <Button
+              variant="destructive"
+              size="sm"
+              onClick={handleStop}
+            >
+              <Square className="w-4 h-4 mr-2" />
+              End Session
+            </Button>
 
-          <div className="text-center">
-            <p className="font-caption text-xs text-muted-foreground">
-              Correctness: 94%
-            </p>
+            <div className="text-center">
+              <p className="font-caption text-xs md:text-sm text-muted-foreground">
+                Correctness: 94%
+              </p>
+            </div>
+
+            <Button
+              variant="secondary"
+              size="icon"
+              className="rounded-full"
+            >
+              <Mic className="w-4 h-4" />
+            </Button>
           </div>
-
-          <Button
-            variant="secondary"
-            size="icon"
-            className="rounded-full"
-          >
-            <Mic className="w-4 h-4" />
-          </Button>
         </div>
       </div>
     </div>

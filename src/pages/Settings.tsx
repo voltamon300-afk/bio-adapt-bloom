@@ -34,7 +34,7 @@ export const Settings = () => {
   };
 
   return (
-    <div className="mobile-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+    <div className="app-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       {/* Header */}
       <div className="flex items-center justify-between py-6 px-2">
         <Button
@@ -47,7 +47,7 @@ export const Settings = () => {
           <span>Back</span>
         </Button>
         
-        <h1 className="font-header text-xl text-foreground">
+        <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
           Settings
         </h1>
 
@@ -56,17 +56,17 @@ export const Settings = () => {
 
       {/* Profile Section */}
       <div className="mb-6 px-2">
-        <Card className="card-nature p-6">
+        <Card className="card-nature responsive-card-padding">
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-gradient-sky rounded-full flex items-center justify-center">
-              <User className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-sky rounded-full flex items-center justify-center">
+              <User className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white" />
             </div>
             <div className="flex-1">
-              <h2 className="font-header text-lg text-foreground">Jordan Davis</h2>
-              <p className="font-body text-sm text-muted-foreground">
+              <h2 className="font-header text-lg md:text-xl lg:text-2xl text-foreground">Jordan Davis</h2>
+              <p className="font-body text-sm md:text-base text-muted-foreground">
                 jordan.davis@email.com
               </p>
-              <p className="font-caption text-xs text-secondary">
+              <p className="font-caption text-xs md:text-sm text-secondary">
                 Premium Member
               </p>
             </div>
@@ -76,19 +76,19 @@ export const Settings = () => {
 
       {/* Accessibility Settings */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
-          <h3 className="font-header text-lg text-foreground mb-4 flex items-center">
-            <Eye className="w-5 h-5 mr-2 text-primary" />
+        <Card className="card-elevated responsive-card-padding">
+          <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground mb-4 flex items-center">
+            <Eye className="w-5 h-5 md:w-6 md:h-6 mr-2 text-primary" />
             Accessibility
           </h3>
           
-          <div className="space-y-4">
+          <div className="space-y-4 md:space-y-6">
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <Label htmlFor="voice-commands" className="font-body text-sm text-foreground">
+                <Label htmlFor="voice-commands" className="font-body text-sm md:text-base text-foreground">
                   Voice Commands
                 </Label>
-                <p className="font-caption text-xs text-muted-foreground">
+                <p className="font-caption text-xs md:text-sm text-muted-foreground">
                   Control the app with voice instructions
                 </p>
               </div>
@@ -101,10 +101,10 @@ export const Settings = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <Label htmlFor="high-contrast" className="font-body text-sm text-foreground">
+                <Label htmlFor="high-contrast" className="font-body text-sm md:text-base text-foreground">
                   High Contrast
                 </Label>
-                <p className="font-caption text-xs text-muted-foreground">
+                <p className="font-caption text-xs md:text-sm text-muted-foreground">
                   Increase contrast for better visibility
                 </p>
               </div>
@@ -117,10 +117,10 @@ export const Settings = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <Label htmlFor="dark-mode" className="font-body text-sm text-foreground">
+                <Label htmlFor="dark-mode" className="font-body text-sm md:text-base text-foreground">
                   Dark Mode
                 </Label>
-                <p className="font-caption text-xs text-muted-foreground">
+                <p className="font-caption text-xs md:text-sm text-muted-foreground">
                   Switch to dark theme
                 </p>
               </div>
@@ -136,15 +136,15 @@ export const Settings = () => {
 
       {/* Preferences */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
-          <h3 className="font-header text-lg text-foreground mb-4 flex items-center">
-            <Globe className="w-5 h-5 mr-2 text-secondary" />
+        <Card className="card-elevated responsive-card-padding">
+          <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground mb-4 flex items-center">
+            <Globe className="w-5 h-5 md:w-6 md:h-6 mr-2 text-secondary" />
             Preferences
           </h3>
           
-          <div className="space-y-4">
+          <div className="space-y-4 md:space-y-6">
             <div>
-              <Label className="font-body text-sm text-foreground mb-2 block">
+              <Label className="font-body text-sm md:text-base text-foreground mb-2 block">
                 Language
               </Label>
               <Select onValueChange={handleLanguageChange} defaultValue="en">
@@ -163,10 +163,10 @@ export const Settings = () => {
             
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <Label htmlFor="notifications" className="font-body text-sm text-foreground">
+                <Label htmlFor="notifications" className="font-body text-sm md:text-base text-foreground">
                   Push Notifications
                 </Label>
-                <p className="font-caption text-xs text-muted-foreground">
+                <p className="font-caption text-xs md:text-sm text-muted-foreground">
                   Receive session reminders and progress updates
                 </p>
               </div>
@@ -182,37 +182,37 @@ export const Settings = () => {
 
       {/* Support & Privacy */}
       <div className="mb-6 px-2">
-        <Card className="card-elevated p-6">
-          <h3 className="font-header text-lg text-foreground mb-4 flex items-center">
-            <Shield className="w-5 h-5 mr-2 text-accent" />
+        <Card className="card-elevated responsive-card-padding">
+          <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground mb-4 flex items-center">
+            <Shield className="w-5 h-5 md:w-6 md:h-6 mr-2 text-accent" />
             Support & Privacy
           </h3>
           
           <div className="space-y-3">
             <Button
               variant="ghost"
-              className="w-full justify-start"
+              className="w-full justify-start text-sm md:text-base"
               onClick={() => {}}
             >
-              <HelpCircle className="w-5 h-5 mr-3" />
+              <HelpCircle className="w-5 h-5 md:w-6 md:h-6 mr-3" />
               Help & Support
             </Button>
             
             <Button
               variant="ghost"
-              className="w-full justify-start"
+              className="w-full justify-start text-sm md:text-base"
               onClick={() => {}}
             >
-              <Shield className="w-5 h-5 mr-3" />
+              <Shield className="w-5 h-5 md:w-6 md:h-6 mr-3" />
               Privacy Policy
             </Button>
             
             <Button
               variant="ghost"
-              className="w-full justify-start"
+              className="w-full justify-start text-sm md:text-base"
               onClick={() => {}}
             >
-              <Bell className="w-5 h-5 mr-3" />
+              <Bell className="w-5 h-5 md:w-6 md:h-6 mr-3" />
               Notification Settings
             </Button>
           </div>
@@ -221,12 +221,12 @@ export const Settings = () => {
 
       {/* Nature Inspiration Quote */}
       <div className="mb-6 px-2">
-        <Card className="card-nature p-4 bg-gradient-calm border-secondary/20">
+        <Card className="card-nature responsive-card-padding bg-gradient-calm border-secondary/20">
           <div className="text-center">
-            <p className="text-nature-cue text-sm mb-2">
+            <p className="text-nature-cue text-sm md:text-base mb-2">
               "In every walk with nature, one receives far more than they seek"
             </p>
-            <p className="font-caption text-xs text-muted-foreground">
+            <p className="font-caption text-xs md:text-sm text-muted-foreground">
               - John Muir
             </p>
           </div>
@@ -238,7 +238,7 @@ export const Settings = () => {
         <Button
           variant="outline"
           size="lg"
-          className="w-full border-destructive/20 text-destructive hover:bg-destructive/10"
+          className="w-full max-w-md mx-auto block border-destructive/20 text-destructive hover:bg-destructive/10"
           onClick={handleLogout}
         >
           <LogOut className="w-5 h-5 mr-2" />
