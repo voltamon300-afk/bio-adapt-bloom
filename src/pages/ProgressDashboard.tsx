@@ -238,17 +238,7 @@ export const ProgressDashboard = () => {
           variant="healing"
           size="lg"
           className="w-full max-w-md mx-auto block"
-          onClick={() => {
-            // Simulate sharing
-            navigator.share?.({
-              title: "My BioAdapt Progress",
-              text: "Check out my rehabilitation progress!",
-              url: window.location.href
-            }).catch(() => {
-              // Fallback for browsers without native sharing
-              navigator.clipboard?.writeText(window.location.href);
-            });
-          }}
+          onClick={shareProgress}
         >
           <Share className="w-5 h-5 mr-2" />
           Share Progress Report
