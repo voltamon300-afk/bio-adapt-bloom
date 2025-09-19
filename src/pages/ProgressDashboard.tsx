@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { 
-  ArrowLeft, 
-  Share, 
-  TrendingUp, 
+import { toast } from "@/components/ui/sonner";
+import {
+  ArrowLeft,
+  Share,
+  TrendingUp,
   Calendar,
   Target,
   Award,
