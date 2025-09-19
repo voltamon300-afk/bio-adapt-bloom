@@ -36,22 +36,29 @@ export const Settings = () => {
   return (
     <div className="app-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       {/* Header */}
-      <div className="flex items-center justify-between py-6 px-2">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => navigate("/dashboard")}
-          className="flex items-center space-x-2"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back</span>
-        </Button>
-        
-        <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
-          Settings
-        </h1>
+      <div className="grid grid-cols-3 items-center py-6 px-2">
+        <div className="col-start-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/dashboard")}
+            className="flex items-center space-x-2"
+            aria-label="Back to dashboard"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back</span>
+          </Button>
+        </div>
 
-        <div className="w-16" /> {/* Spacer */}
+        <div className="col-start-2 text-center">
+          <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
+            Settings
+          </h1>
+        </div>
+
+        <div className="col-start-3 text-right">
+          <div className="w-16 inline-block" /> {/* keeps header balanced */}
+        </div>
       </div>
 
       {/* Profile Section */}

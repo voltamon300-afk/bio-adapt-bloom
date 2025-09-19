@@ -9,7 +9,8 @@ import {
   Square, 
   Mic, 
   Camera,
-  RotateCcw
+  RotateCcw,
+  ArrowLeft
 } from "lucide-react";
 import exerciseIllustration from "@/assets/exercise-illustration.png";
 
@@ -92,8 +93,11 @@ export const ExerciseSession = () => {
             variant="ghost"
             size="sm"
             onClick={() => navigate("/dashboard")}
+            className="flex items-center space-x-2"
+            aria-label="Back to dashboard"
           >
-            ← Back
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back</span>
           </Button>
         </div>
         
@@ -106,7 +110,7 @@ export const ExerciseSession = () => {
           </p>
         </div>
 
-        <Button variant="ghost" size="icon-sm">
+        <Button variant="ghost" size="icon-sm" aria-label="Toggle camera">
           <Camera className="w-4 h-4 md:w-5 md:h-5" />
         </Button>
       </div>
@@ -184,6 +188,8 @@ export const ExerciseSession = () => {
                 size="icon"
                 className="absolute inset-2 rounded-full"
                 onClick={handlePlayPause}
+                aria-label={isPlaying ? "Pause session" : "Start session"}
+                title={isPlaying ? "Pause session" : "Start session"}
               >
                 {isPlaying ? (
                   <Pause className="w-5 h-5 md:w-6 md:h-6" />
@@ -250,6 +256,7 @@ export const ExerciseSession = () => {
               variant="secondary"
               size="icon"
               className="rounded-full"
+              aria-label="Toggle microphone"
             >
               <Mic className="w-4 h-4" />
             </Button>

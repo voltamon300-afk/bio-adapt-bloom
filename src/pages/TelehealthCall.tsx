@@ -107,6 +107,7 @@ export const TelehealthCall = () => {
                 variant={isMicOn ? "secondary" : "destructive"}
                 size="icon-lg"
                 onClick={toggleMic}
+                aria-label={isMicOn ? "Mute microphone" : "Unmute microphone"}
                 className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 {isMicOn ? <Mic className="w-6 h-6" /> : <MicOff className="w-6 h-6" />}
@@ -116,6 +117,7 @@ export const TelehealthCall = () => {
                 variant={isVideoOn ? "secondary" : "destructive"}
                 size="icon-lg"
                 onClick={toggleVideo}
+                aria-label={isVideoOn ? "Turn video off" : "Turn video on"}
                 className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 {isVideoOn ? <Video className="w-6 h-6" /> : <VideoOff className="w-6 h-6" />}
@@ -125,6 +127,7 @@ export const TelehealthCall = () => {
                 variant="destructive"
                 size="icon-lg"
                 onClick={handleEndCall}
+                aria-label="End call"
                 className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
                 <Phone className="w-6 h-6 rotate-[135deg]" />
@@ -132,6 +135,7 @@ export const TelehealthCall = () => {
 
               <Button
                 variant="nature"
+                aria-label="Open messages"
                 size="icon-lg"
                 className="rounded-full w-12 h-12 md:w-14 md:h-14"
               >
@@ -140,6 +144,7 @@ export const TelehealthCall = () => {
 
               <Button
                 variant="ghost"
+                aria-label="Call settings"
                 size="icon-lg"
                 className="rounded-full text-white hover:bg-white/20 w-12 h-12 md:w-14 md:h-14"
               >
@@ -152,7 +157,9 @@ export const TelehealthCall = () => {
           <div className="absolute bottom-24 md:bottom-32 right-4 md:right-6">
             <Button
               variant="healing"
+              size="sm"
               className="bg-secondary/90 backdrop-blur-sm border border-secondary-foreground/20 text-sm md:text-base"
+              aria-label="Adjust plan"
             >
               Adjust Plan
             </Button>
@@ -297,10 +304,10 @@ export const TelehealthCall = () => {
           variant="healing"
           size="xl"
           onClick={handleJoinCall}
-          className="w-full max-w-md mx-auto block"
+          className="w-full max-w-md mx-auto flex items-center justify-center space-x-3"
         >
-          <Video className="w-6 h-6 mr-3" />
-          Join Call
+          <Video className="w-6 h-6" />
+          <span>Join Call</span>
         </Button>
         
         <div className="text-center mt-4">

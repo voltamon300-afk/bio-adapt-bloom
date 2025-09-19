@@ -189,20 +189,22 @@ export const SessionSummary = () => {
             variant="healing"
             size="lg"
             onClick={handleNextSession}
-            className="w-full max-w-md mx-auto block"
+            className="w-full max-w-md mx-auto flex items-center justify-center space-x-2"
+            aria-label="Schedule next session"
           >
-            <Calendar className="w-5 h-5 mr-2" />
-            Schedule Next Session
+            <Calendar className="w-5 h-5" />
+            <span>Schedule Next Session</span>
           </Button>
 
           <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
             <Button
               variant="outline"
               onClick={handleRestartSession}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center space-x-2"
+              aria-label="Restart session"
             >
-              <RotateCcw className="w-4 h-4 mr-1" />
-              Retry
+              <RotateCcw className="w-4 h-4" />
+              <span>Retry</span>
             </Button>
             
             <Button
@@ -214,10 +216,11 @@ export const SessionSummary = () => {
                   url: window.location.href
                 });
               }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center space-x-2"
+              aria-label="Share session"
             >
-              <Share className="w-4 h-4 mr-1" />
-              Share
+              <Share className="w-4 h-4" />
+              <span>Share</span>
             </Button>
           </div>
 

@@ -51,7 +51,7 @@ export const ProgressDashboard = () => {
           Your Progress
         </h1>
 
-        <Button variant="ghost" size="icon-sm">
+        <Button variant="ghost" size="icon-sm" aria-label="Share progress">
           <Share className="w-4 h-4" />
         </Button>
       </div>
@@ -242,7 +242,7 @@ export const ProgressDashboard = () => {
         <Button
           variant="healing"
           size="lg"
-          className="w-full max-w-md mx-auto block"
+          className="w-full max-w-md mx-auto flex items-center justify-center space-x-2"
           onClick={() => {
             // Simulate sharing
             navigator.share?.({
@@ -255,8 +255,8 @@ export const ProgressDashboard = () => {
             });
           }}
         >
-          <Share className="w-5 h-5 mr-2" />
-          Share Progress Report
+          <Share className="w-5 h-5" />
+          <span>Share Progress Report</span>
         </Button>
       </div>
     </div>
