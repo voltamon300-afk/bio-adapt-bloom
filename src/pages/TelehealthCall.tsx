@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { 
-  Video, 
-  VideoOff, 
-  Mic, 
-  MicOff, 
+import { toast } from "@/components/ui/sonner";
+import {
+  Video,
+  VideoOff,
+  Mic,
+  MicOff,
   Phone,
   Settings,
   MessageSquare,
@@ -42,6 +43,7 @@ export const TelehealthCall = () => {
 
   const handleJoinCall = () => {
     setIsInCall(true);
+    toast("Joining call...");
   };
 
   const handleEndCall = () => {
@@ -298,6 +300,7 @@ export const TelehealthCall = () => {
           size="xl"
           onClick={handleJoinCall}
           className="w-full max-w-md mx-auto block"
+          aria-label="Join telehealth call"
         >
           <Video className="w-6 h-6 mr-3" />
           Join Call

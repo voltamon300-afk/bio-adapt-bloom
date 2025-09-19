@@ -75,9 +75,9 @@ export const ExerciseSession = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-background/95 to-muted/40 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-b from-background/95 to-muted/40 overflow-x-hidden flex flex-col">
       {/* Background Illustration */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <img 
           src={exerciseIllustration} 
           alt="Exercise Background" 
