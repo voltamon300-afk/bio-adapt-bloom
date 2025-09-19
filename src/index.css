@@ -2,95 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* BioAdapt Design System - Bio-mimetic Rehabilitation App */
+/* All colors MUST be HSL. Nature-inspired healing design. */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core App Colors - Based on natural healing elements */
+    --background: 0 0% 98%; /* #FAFAFA */
+    --background-gradient: linear-gradient(180deg, hsl(0 0% 98%) 0%, hsl(220 3% 94%) 100%);
+    --foreground: 217 91% 16%; /* #0D47A1 - deep ocean blue for headers */
+    --foreground-body: 0 0% 13%; /* #212121 - charcoal for body text */
+    --foreground-caption: 0 0% 26%; /* #424242 - gray for captions */
 
+    /* Primary Brand Colors - Sky and healing */
+    --primary: 207 89% 54%; /* #2196F3 - calming sky blue */
+    --primary-hover: 207 89% 48%;
+    --primary-pressed: 207 89% 42%;
+    --primary-foreground: 0 0% 100%; /* white text on primary */
+
+    /* Secondary - Healing nature green */
+    --secondary: 122 39% 49%; /* #4CAF50 - healing green */
+    --secondary-hover: 122 39% 44%;
+    --secondary-pressed: 122 39% 39%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent - Warm energy orange */
+    --accent: 36 100% 50%; /* #FF9800 - warm orange */
+    --accent-hover: 36 100% 45%;
+    --accent-pressed: 36 100% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* UI States */
+    --muted: 220 5% 96%;
+    --muted-foreground: 220 4% 58%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 13%;
+    --card-shadow: 0 2px 8px hsl(0 0% 0% / 0.08);
+    --card-shadow-hover: 0 4px 16px hsl(0 0% 0% / 0.12);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Interactive Elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 207 89% 54%;
+    --disabled: 0 0% 60%;
+    --disabled-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Feedback Colors */
+    --success: 122 39% 49%; /* healing green */
+    --success-foreground: 0 0% 100%;
+    --warning: 36 100% 50%; /* warm orange */
+    --warning-foreground: 0 0% 100%;
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Nature-inspired gradients */
+    --gradient-healing: linear-gradient(135deg, hsl(122 39% 49%) 0%, hsl(122 39% 54%) 100%);
+    --gradient-sky: linear-gradient(135deg, hsl(207 89% 54%) 0%, hsl(207 89% 64%) 100%);
+    --gradient-energy: linear-gradient(135deg, hsl(36 100% 50%) 0%, hsl(36 100% 60%) 100%);
+    --gradient-calm: linear-gradient(135deg, hsl(207 89% 54% / 0.1) 0%, hsl(122 39% 49% / 0.1) 100%);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Spacing - 16px grid system */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem;  /* 8px */
+    --spacing-md: 1rem;    /* 16px */
+    --spacing-lg: 1.5rem;  /* 24px */
+    --spacing-xl: 2rem;    /* 32px */
+    --spacing-2xl: 3rem;   /* 48px */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Border radius - organic curves */
+    --radius-sm: 0.5rem;   /* 8px */
+    --radius-md: 0.75rem;  /* 12px */
+    --radius-lg: 1rem;     /* 16px */
+    --radius-xl: 1.5rem;   /* 24px */
+    --radius-full: 9999px;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Typography scale */
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px - captions */
+    --font-size-base: 1rem;    /* 16px - body */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+    --font-size-2xl: 1.5rem;   /* 24px - headers */
+    --font-size-3xl: 1.875rem; /* 30px */
+    --font-size-4xl: 2.25rem;  /* 36px */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Nature textures - subtle overlays */
+    --texture-leaf: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234CAF50' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20S-10 18.954-10 30s8.954 20 20 20 20-8.954 20-20zm15 15c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --texture-wood: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.02'%3E%3Cpath d='M0 0h40v40H0V0zm20 20v20h20V20H20zm0-20v20h20V0H20z'/%3E%3C/g%3E%3C/svg%3E");
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animation timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-nature: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 217 91% 8%;
+    --foreground: 0 0% 98%;
+    --foreground-body: 0 0% 85%;
+    --foreground-caption: 0 0% 70%;
+    --card: 217 91% 12%;
+    --card-foreground: 0 0% 98%;
+    --muted: 217 50% 20%;
+    --muted-foreground: 217 20% 65%;
+    --border: 217 50% 25%;
+    --input: 217 50% 25%;
   }
 }
 
@@ -100,6 +116,159 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background antialiased;
+    background: var(--background-gradient);
+    min-height: 100vh;
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    color: hsl(var(--foreground-body));
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* Typography styles */
+  .font-header {
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    line-height: 1.2;
+  }
+
+  .font-body {
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    color: hsl(var(--foreground-body));
+    line-height: 1.6;
+  }
+
+  .font-caption {
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    color: hsl(var(--foreground-caption));
+    line-height: 1.4;
+  }
+
+  /* Nature-inspired text styles */
+  .text-nature-cue {
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    font-style: italic;
+    color: hsl(var(--secondary));
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  /* Card variants with nature-inspired shadows */
+  .card-elevated {
+    @apply bg-card rounded-lg border border-border;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-smooth);
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  .card-nature {
+    @apply card-elevated;
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card)) 100%),
+                var(--texture-leaf);
+    background-blend-mode: overlay;
+  }
+
+  /* Button base styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium;
+    @apply transition-all duration-300 focus-visible:outline-none focus-visible:ring-2;
+    @apply disabled:opacity-50 disabled:pointer-events-none;
+    min-height: 44px; /* Accessibility touch target */
+  }
+
+  /* Loading animations - nature-inspired */
+  .loading-leaf {
+    animation: leaf-grow 2s ease-in-out infinite;
+  }
+
+  @keyframes leaf-grow {
+    0%, 100% { 
+      transform: scale(1) rotate(0deg);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: scale(1.1) rotate(2deg);
+      opacity: 1;
+    }
+  }
+
+  /* Progress ring animation */
+  .progress-ring {
+    transform-origin: center;
+    animation: progress-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes progress-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  /* Accessibility helpers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-container {
+    @apply mx-auto px-4 max-w-sm;
+    max-width: 360px;
+  }
+
+  .mobile-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  /* Toast notification styles */
+  .toast-slide-up {
+    animation: toast-slide-up 0.3s ease-out;
+  }
+
+  @keyframes toast-slide-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --card-shadow: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --border: 0 0% 40%;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
