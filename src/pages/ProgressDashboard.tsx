@@ -231,40 +231,6 @@ export const ProgressDashboard = () => {
         </Card>
       </div>
 
-      {/* Achievements */}
-      <div className="mb-6 px-2">
-        <Card className="card-elevated responsive-card-padding">
-          <h3 className="font-header text-lg md:text-xl lg:text-2xl text-foreground mb-4">Recent Achievements</h3>
-          
-          <div className="space-y-3 md:space-y-4">
-            <div className="flex items-center space-x-3 p-3 md:p-4 bg-gradient-calm rounded-lg border border-secondary/10">
-              <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-energy rounded-full flex items-center justify-center">
-                <Award className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
-              </div>
-              <div className="flex-1">
-                <p className="font-body text-sm md:text-base text-foreground">Week Warrior</p>
-                <p className="font-caption text-xs md:text-sm text-muted-foreground">
-                  Completed 7 days straight
-                </p>
-              </div>
-              <span className="font-caption text-xs md:text-sm text-accent">+50pts</span>
-            </div>
-            
-            <div className="flex items-center space-x-3 p-3 md:p-4 bg-gradient-calm rounded-lg border border-secondary/10">
-              <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-healing rounded-full flex items-center justify-center">
-                <Target className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
-              </div>
-              <div className="flex-1">
-                <p className="font-body text-sm md:text-base text-foreground">Perfect Form</p>
-                <p className="font-caption text-xs md:text-sm text-muted-foreground">
-                  95% accuracy in last session
-                </p>
-              </div>
-              <span className="font-caption text-xs md:text-sm text-accent">+25pts</span>
-            </div>
-          </div>
-        </Card>
-      </div>
 
       {/* Share Report Button */}
       <div className="px-2 pb-8">
