@@ -34,6 +34,34 @@ const COMPLIANCE_WEEKS = [
 export const ProgressDashboard = () => {
   const navigate = useNavigate();
 
+  const shareProgress = async () => {
+    const shareData = {
+      title: "My BioAdapt Progress",
+      text: "Check out my rehabilitation progress!",
+      url: window.location.origin + "/progress",
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        toast("Shared successfully");
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(shareData.url);
+        toast("Link copied to clipboard");
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = shareData.url;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        toast("Link copied");
+      }
+    } catch (e) {
+      toast("Share cancelled or failed");
+    }
+  };
+
   return (
     <div className="app-container min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       {/* Header */}
@@ -47,12 +75,12 @@ export const ProgressDashboard = () => {
           <ArrowLeft className="w-4 h-4" />
           <span>Back</span>
         </Button>
-        
+
         <h1 className="font-header text-xl md:text-2xl lg:text-3xl text-foreground responsive-header">
           Your Progress
         </h1>
 
-        <Button variant="ghost" size="icon-sm">
+        <Button variant="ghost" size="icon-sm" onClick={shareProgress} aria-label="Share Progress">
           <Share className="w-4 h-4" />
         </Button>
       </div>
